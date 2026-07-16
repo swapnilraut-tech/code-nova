@@ -31,15 +31,15 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <ThemeProvider 
+        <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
-          disableTransitionOnChange>
+          disableTransitionOnChange
+        >
         <Header />
           
-        {children}
-        
+          {children}
         </ThemeProvider>
         </body>
     </html>

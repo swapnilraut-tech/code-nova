@@ -4,6 +4,7 @@ import Editor from '@monaco-editor/react';
 import { useTheme } from "next-themes";
 import { Sparkles, RefreshCw, FileCode } from 'lucide-react';
 import { SelectDemo } from './SelectDropdown';
+import { CODE_SNIPPETS } from '@/constant/data';
 
 
 function CodeEditor() {
@@ -11,7 +12,7 @@ function CodeEditor() {
     const { resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
     const [language , setLanguage] = useState("javascript")
-    const [value, setValue] = useState < string | undefined >("")
+    const [value, setValue] = useState < string | undefined >(CODE_SNIPPETS["javascript"])
     console.log(language,'================')
     // Prevent hydration mismatch
     useEffect(() => {

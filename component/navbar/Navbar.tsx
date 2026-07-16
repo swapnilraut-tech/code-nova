@@ -5,7 +5,7 @@ import { Terminal, Play, Share2, Moon, Sun, Menu, X, Settings, HelpCircle, Code 
 import { useTheme } from "next-themes"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSubTrigger, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
+import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 
 
 
@@ -100,7 +100,7 @@ export default function Header() {
                     </button>
 
                     {/* Clerk Authentication */}
-                    <SignedOut>
+                    <Show when="signed-out">
                         <SignInButton mode="modal">
                             <button className="text-xs font-semibold text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white cursor-pointer transition-colors px-2 py-1.5">
                                 Sign In
@@ -111,10 +111,10 @@ export default function Header() {
                                 Sign Up
                             </button>
                         </SignUpButton>
-                    </SignedOut>
-                    <SignedIn>
+                    </Show>
+                    <Show when="signed-in">
                         <UserButton afterSignOutUrl="/" />
-                    </SignedIn>
+                    </Show>
 
                     {/* Run Code CTA */}
                     <button className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 px-4 py-1.5 text-xs font-semibold text-white shadow-md shadow-indigo-500/20 hover:from-indigo-600 hover:to-purple-700 hover:shadow-indigo-500/30 active:scale-[0.98] transition-all cursor-pointer">
@@ -164,7 +164,7 @@ export default function Header() {
                         </button>
                     </div>
 
-                    <SignedOut>
+                    <Show when="signed-out">
                         <div className="flex flex-col gap-2 pt-2 border-t border-zinc-100 dark:border-zinc-900">
                             <SignInButton mode="modal">
                                 <button className="flex w-full items-center justify-center rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 py-2 text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 cursor-pointer">
@@ -177,13 +177,13 @@ export default function Header() {
                                 </button>
                             </SignUpButton>
                         </div>
-                    </SignedOut>
-                    <SignedIn>
+                    </Show>
+                    <Show when="signed-in">
                         <div className="flex items-center gap-3 px-3 py-2 border-t border-zinc-100 dark:border-zinc-900">
                             <UserButton afterSignOutUrl="/" />
                             <span className="text-sm font-medium text-zinc-600 dark:text-zinc-400">Profile Settings</span>
                         </div>
-                    </SignedIn>
+                    </Show>
                    
                 </div>
             )}

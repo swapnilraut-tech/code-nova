@@ -5,7 +5,7 @@ import { Terminal, Play, Share2, Moon, Sun, Menu, X, Settings, HelpCircle, Code 
 import { useTheme } from "next-themes"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSubTrigger, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
+import { Show, SignIn, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 
 
 
@@ -49,7 +49,7 @@ export default function Header() {
     return (
         <header className="sticky top-0 z-50 w-full border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-[#16161a] transition-colors duration-300">
             <div className="mx-auto flex max-w-7xl h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-               
+
                 {/* Logo Section */}
                 <div className="flex items-center gap-3">
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-[1.5px] shadow-lg shadow-indigo-500/20">
@@ -112,9 +112,10 @@ export default function Header() {
                             </button>
                         </SignUpButton>
                     </Show>
-                    <Show when="signed-in">
-                        <UserButton afterSignOutUrl="/" />
-                    </Show>
+                        <SignInButton>
+
+                        <UserButton  />
+                        </SignInButton>
 
                     {/* Run Code CTA */}
                     <button className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 px-4 py-1.5 text-xs font-semibold text-white shadow-md shadow-indigo-500/20 hover:from-indigo-600 hover:to-purple-700 hover:shadow-indigo-500/30 active:scale-[0.98] transition-all cursor-pointer">
@@ -184,7 +185,7 @@ export default function Header() {
                             <span className="text-sm font-medium text-zinc-600 dark:text-zinc-400">Profile Settings</span>
                         </div>
                     </Show>
-                   
+
                 </div>
             )}
         </header>

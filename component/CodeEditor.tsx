@@ -3,11 +3,13 @@ import React, { useRef, useState, useEffect } from 'react';
 import Editor from '@monaco-editor/react';
 import { useTheme } from "next-themes";
 import { Play, Sparkles, RefreshCw, FileCode } from 'lucide-react';
-
+import { useDispatch } from 'react-redux';
+import { setCode } from '@/redux/features/editorSlice';
 function CodeEditor() {
     const editorRef = useRef<any>(null);
     const { resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
+    const dispatch = useDispatch();
 
     // Prevent hydration mismatch
     useEffect(() => {
@@ -71,10 +73,13 @@ function CodeEditor() {
                         fontFamily: 'var(--font-geist-mono), monospace',
                         lineHeight: 22
                     }}
+                    onChange={(value)=>{
+                        dispatch(setCode(value || ""))
+                    }}
                 />
             </div>
         </div>
     );
 }
 
-export default CodeEditor;
+export default CodeEditor;

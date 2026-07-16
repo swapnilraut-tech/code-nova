@@ -4,16 +4,14 @@ import React, { useState, useEffect } from "react";
 import { Terminal, Play, Share2, Moon, Sun, Menu, X, Settings, HelpCircle, Code } from "lucide-react";
 import { useTheme } from "next-themes"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSubTrigger, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-import { Show, SignIn, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
+import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
-
 
 
 export function ModeToggle() {
     const { setTheme } = useTheme()
 
-
+  
     return (
         <DropdownMenu>
             <DropdownMenuTrigger className="relative flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-200 bg-zinc-50 text-zinc-600 hover:bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900/50 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-white transition-all cursor-pointer">
@@ -40,7 +38,7 @@ export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const { theme, setTheme, resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
-
+   
     useEffect(() => {
         setMounted(true);
     }, []);
@@ -160,7 +158,7 @@ export default function Header() {
                             <Share2 className="h-4 w-4" />
                             <span>Share Workspace</span>
                         </button>
-                        <button className="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 py-2 text-sm font-semibold text-white">
+                        <button  className="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 py-2 text-sm font-semibold text-white">
                             <Play className="h-4 w-4 fill-current" />
                             <span>Run Code</span>
                         </button>

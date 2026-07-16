@@ -5,6 +5,7 @@ import { Terminal, Play, Share2, Moon, Sun, Menu, X, Settings, HelpCircle, Code 
 import { useTheme } from "next-themes"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSubTrigger, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 
 
 
@@ -98,6 +99,23 @@ export default function Header() {
                         <Settings className="h-4 w-4" />
                     </button>
 
+                    {/* Clerk Authentication */}
+                    <SignedOut>
+                        <SignInButton mode="modal">
+                            <button className="text-xs font-semibold text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white cursor-pointer transition-colors px-2 py-1.5">
+                                Sign In
+                            </button>
+                        </SignInButton>
+                        <SignUpButton mode="modal">
+                            <button className="rounded-lg bg-indigo-600 hover:bg-indigo-700 px-3 py-1.5 text-xs font-semibold text-white cursor-pointer transition-all shadow-md shadow-indigo-500/10">
+                                Sign Up
+                            </button>
+                        </SignUpButton>
+                    </SignedOut>
+                    <SignedIn>
+                        <UserButton afterSignOutUrl="/" />
+                    </SignedIn>
+
                     {/* Run Code CTA */}
                     <button className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 px-4 py-1.5 text-xs font-semibold text-white shadow-md shadow-indigo-500/20 hover:from-indigo-600 hover:to-purple-700 hover:shadow-indigo-500/30 active:scale-[0.98] transition-all cursor-pointer">
                         <Play className="h-3.5 w-3.5 fill-current" />
@@ -145,6 +163,28 @@ export default function Header() {
                             <span>Run Code</span>
                         </button>
                     </div>
+
+                    <SignedOut>
+                        <div className="flex flex-col gap-2 pt-2 border-t border-zinc-100 dark:border-zinc-900">
+                            <SignInButton mode="modal">
+                                <button className="flex w-full items-center justify-center rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 py-2 text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 cursor-pointer">
+                                    Sign In
+                                </button>
+                            </SignInButton>
+                            <SignUpButton mode="modal">
+                                <button className="flex w-full items-center justify-center rounded-lg bg-indigo-600 py-2 text-sm font-semibold text-white hover:bg-indigo-700 cursor-pointer">
+                                    Sign Up
+                                </button>
+                            </SignUpButton>
+                        </div>
+                    </SignedOut>
+                    <SignedIn>
+                        <div className="flex items-center gap-3 px-3 py-2 border-t border-zinc-100 dark:border-zinc-900">
+                            <UserButton afterSignOutUrl="/" />
+                            <span className="text-sm font-medium text-zinc-600 dark:text-zinc-400">Profile Settings</span>
+                        </div>
+                    </SignedIn>
+                   
                 </div>
             )}
         </header>

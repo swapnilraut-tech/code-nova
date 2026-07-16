@@ -6,6 +6,9 @@ import { useTheme } from "next-themes"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSubTrigger, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
+import { setError, setOutput } from "@/redux/features/editorSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 
 export function ModeToggle() {
@@ -38,7 +41,38 @@ export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const { theme, setTheme, resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
-   
+    const code = useSelector(
+        (state: RootState) => state.editor.code
+    );
+
+    const dispatch = useDispatch();
+
+    const runCode = () => {
+        console.log(code);
+        let logs: string[] = [];
+
+        const customConsole = {
+            log: (...args: any[]) => {
+                logs.push(args.join(" "));
+            }
+        }
+
+        try {
+
+            new Function("console", code)(customConsole);
+
+            dispatch(setOutput(logs.join("\n")));
+
+            dispatch(setError(""));
+
+        } catch (err: any) {
+
+            dispatch(setError(err.message));
+
+            dispatch(setOutput(""));
+        }
+
+    }
     useEffect(() => {
         setMounted(true);
     }, []);
@@ -111,10 +145,11 @@ export default function Header() {
                             </button>
                         </SignUpButton>
                     </Show>
-                        <SignInButton>
+                    <SignInButton>
 
-                        <UserButton  />
-                        </SignInButton>
+                        <UserButton />
+                    </SignInButton>
+
 
                     {/* Run Code CTA */}
                     <button className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 px-4 py-1.5 text-xs font-semibold text-white shadow-md shadow-indigo-500/20 hover:from-indigo-600 hover:to-purple-700 hover:shadow-indigo-500/30 active:scale-[0.98] transition-all cursor-pointer">

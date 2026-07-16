@@ -5,6 +5,7 @@ import Header from "@/component/navbar/Navbar";
 import { ThemeProvider } from "@/component/theme";
 import { ClerkProvider } from "@clerk/nextjs";
 import ReduxProvider from "@/component/redux-provider";
+import Console from "@/component/Console";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,6 +45,7 @@ export default function RootLayout({
 
             <Header />
             {children}
+              <Console />
             </ReduxProvider>
           </ThemeProvider>
         </body>

@@ -2,15 +2,17 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Editor from '@monaco-editor/react';
 import { useTheme } from "next-themes";
-import { Play, Sparkles, RefreshCw, FileCode } from 'lucide-react';
-import { useDispatch } from 'react-redux';
-import { setCode } from '@/redux/features/editorSlice';
+import { Sparkles, RefreshCw, FileCode } from 'lucide-react';
+import { SelectDemo } from './SelectDropdown';
+
+
 function CodeEditor() {
     const editorRef = useRef<any>(null);
     const { resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
-    const dispatch = useDispatch();
-
+    const [language , setLanguage] = useState("javascript")
+    const [value, setValue] = useState < string | undefined >("")
+    console.log(language,'================')
     // Prevent hydration mismatch
     useEffect(() => {
         setMounted(true);
@@ -19,6 +21,7 @@ function CodeEditor() {
     // Captures the editor instance when it loads
     function handleEditorDidMount(editor:any, monaco:any) {
         editorRef.current = editor;
+        editor.focus()
     }
 
     // Reads the editor text only when requested (e.g., clicking a button)
@@ -29,7 +32,10 @@ function CodeEditor() {
     }
 
     const currentTheme = mounted && resolvedTheme === "light" ? "light" : "vs-dark";
-
+const getTeckStack = (stack:any)=>{
+    setLanguage(stack)
+    setValue(CODE_SNIPPETS[stack])
+}
     return (
         <div className="flex flex-col flex-1 p-4 md:p-6 bg-white dark:bg-zinc-900/30 rounded-2xl border border-zinc-200 dark:border-zinc-800/80 shadow-2xl backdrop-blur-sm mt-6 mb-8 mx-4 sm:mx-6 lg:mx-8 transition-all duration-300">
             
@@ -39,7 +45,7 @@ function CodeEditor() {
                     <FileCode className="h-4 w-4 text-yellow-500 dark:text-yellow-400" />
                     <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">index.js</span>
                     <span className="h-2 w-2 rounded-full bg-zinc-300 dark:bg-zinc-600"></span>
-                    <span className="text-xs text-zinc-500">JavaScript</span>
+                    <SelectDemo value={language} setLang={getTeckStack}/>
                 </div>
                 
                 <div className="flex items-center gap-2">
@@ -71,11 +77,12 @@ function CodeEditor() {
                             horizontal: 'visible'
                         },
                         fontFamily: 'var(--font-geist-mono), monospace',
-                        lineHeight: 22
+                        lineHeight: 22,
+                        
                     }}
-                    onChange={(value)=>{
-                        dispatch(setCode(value || ""))
-                    }}
+                    value={value}
+                    onChange={value => setValue(value)}
+                  
                 />
             </div>
         </div>

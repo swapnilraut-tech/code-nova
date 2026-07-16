@@ -182,7 +182,7 @@ export default function Header() {
                     </Show>
                     <Show when="signed-in">
                         <div className="flex items-center gap-3 px-3 py-2 border-t border-zinc-100 dark:border-zinc-900">
-                            <UserButton afterSignOutUrl="/" />
+                            <UserButton />
                             <span className="text-sm font-medium text-zinc-600 dark:text-zinc-400">Profile Settings</span>
                         </div>
                     </Show>

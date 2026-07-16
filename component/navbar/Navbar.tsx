@@ -6,6 +6,7 @@ import { useTheme } from "next-themes"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSubTrigger, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Show, SignIn, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
+import Link from "next/link";
 
 
 
@@ -57,30 +58,30 @@ export default function Header() {
                             <Terminal className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
                         </div>
                     </div>
-                    <a href="/" className="group flex items-center gap-1.5">
+                    <Link href="/" className="group flex items-center gap-1.5">
                         <span className="text-xl font-bold tracking-tight text-zinc-900 dark:text-white transition-colors group-hover:text-zinc-700 dark:group-hover:text-zinc-200">
                             Code<span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Nova</span>
                         </span>
                         <span className="rounded-full bg-indigo-500/10 px-2 py-0.5 text-[10px] font-medium text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
                             v1.0
                         </span>
-                    </a>
+                    </Link>
                 </div>
 
                 {/* Desktop Navigation */}
                 <nav className="hidden md:flex items-center gap-6">
-                    <a href="/" className="text-sm font-medium text-indigo-600 dark:text-indigo-400 transition-colors">
+                    <Link href="/" className="text-sm font-medium text-indigo-600 dark:text-indigo-400 transition-colors">
                         Editor
-                    </a>
-                    <a href="/docs" className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors">
+                    </Link>
+                    <Link href="/docs" className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors">
                         Docs
-                    </a>
-                    <a href="/snippets" className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors">
+                    </Link>
+                    <Link href="/snippets" className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors">
                         Snippets
-                    </a>
-                    <a href="/about" className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors">
+                    </Link>
+                    <Link href="/about" className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors">
                         About
-                    </a>
+                    </Link>
                 </nav>
 
                 {/* Desktop Actions */}
@@ -141,18 +142,18 @@ export default function Header() {
             {mobileMenuOpen && (
                 <div className="border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 px-4 py-4 md:hidden flex flex-col gap-4 animate-in slide-in-from-top duration-200">
                     <nav className="flex flex-col gap-3">
-                        <a href="/" className="rounded-lg bg-zinc-100 dark:bg-zinc-900 px-3 py-2 text-sm font-medium text-indigo-600 dark:text-indigo-400">
+                        <Link href="/" className="rounded-lg bg-zinc-100 dark:bg-zinc-900 px-3 py-2 text-sm font-medium text-indigo-600 dark:text-indigo-400">
                             Editor
-                        </a>
-                        <a href="/docs" className="rounded-lg px-3 py-2 text-sm font-medium text-zinc-600 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-white">
+                        </Link>
+                        <Link href="/docs" className="rounded-lg px-3 py-2 text-sm font-medium text-zinc-600 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-white">
                             Docs
-                        </a>
-                        <a href="/snippets" className="rounded-lg px-3 py-2 text-sm font-medium text-zinc-600 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-white">
+                        </Link>
+                        <Link href="/snippets" className="rounded-lg px-3 py-2 text-sm font-medium text-zinc-600 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-white">
                             Snippets
-                        </a>
-                        <a href="/about" className="rounded-lg px-3 py-2 text-sm font-medium text-zinc-600 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-white">
+                        </Link>
+                        <Link href="/about" className="rounded-lg px-3 py-2 text-sm font-medium text-zinc-600 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-white">
                             About
-                        </a>
+                        </Link>
                     </nav>
                     <div className="flex flex-col gap-2 pt-2 border-t border-zinc-100 dark:border-zinc-900">
                         <button className="flex w-full items-center justify-center gap-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 py-2 text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800">

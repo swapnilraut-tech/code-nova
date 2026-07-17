@@ -39,40 +39,10 @@ export function ModeToggle() {
 
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const { theme, setTheme, resolvedTheme } = useTheme();
+    const { theme, resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
-    const code = useSelector(
-        (state: RootState) => state.editor.code
-    );
-
-    const dispatch = useDispatch();
-
-    const runCode = () => {
-        console.log(code);
-        let logs: string[] = [];
-
-        const customConsole = {
-            log: (...args: any[]) => {
-                logs.push(args.join(" "));
-            }
-        }
-
-        try {
-
-            new Function("console", code)(customConsole);
-
-            dispatch(setOutput(logs.join("\n")));
-
-            dispatch(setError(""));
-
-        } catch (err: any) {
-
-            dispatch(setError(err.message));
-
-            dispatch(setOutput(""));
-        }
-
-    }
+  
+    
     useEffect(() => {
         setMounted(true);
     }, []);

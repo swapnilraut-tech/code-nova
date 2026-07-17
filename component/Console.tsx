@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 
 export default function Console({ language, editorRef }: { language: string, editorRef: React.RefObject<any> }) {
-
     const output = useSelector(
         (state: RootState) => state.editor.output
     );

@@ -2,9 +2,10 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Editor from '@monaco-editor/react';
 import { useTheme } from "next-themes";
-import { Sparkles, RefreshCw, FileCode } from 'lucide-react';
+import { Sparkles, RefreshCw, FileCode, Play } from 'lucide-react';
 import { SelectDemo } from './SelectDropdown';
 import { CODE_SNIPPETS } from '@/constant/data';
+import Console from './Console';
 
 
 function CodeEditor() {
@@ -48,7 +49,12 @@ const getTeckStack = (stack:any)=>{
                     <span className="h-2 w-2 rounded-full bg-zinc-300 dark:bg-zinc-600"></span>
                     <SelectDemo value={language} setLang={getTeckStack}/>
                 </div>
-                
+
+                {/* Run Code CTA */}
+                <button className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 px-4 py-1.5 text-xs font-semibold text-white shadow-md shadow-indigo-500/20 hover:from-indigo-600 hover:to-purple-700 hover:shadow-indigo-500/30 active:scale-[0.98] transition-all cursor-pointer">
+                    <Play className="h-3.5 w-3.5 fill-current" />
+                    <span>Run Code</span>
+                </button>
                 <div className="flex items-center gap-2">
                     <button 
                         onClick={showValue} 
@@ -61,7 +67,7 @@ const getTeckStack = (stack:any)=>{
             </div>
 
             {/* Monaco Editor Container */}
-            <div className="overflow-hidden rounded-b-xl border-x border-b border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-[#1e1e1e] p-2 transition-all duration-300">
+            <div className="overflow-hidden grid grid-cols-2 rounded-b-xl border-x border-b border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-[#1e1e1e] p-2 transition-all duration-300">
                 <Editor
                     height="55vh"
                     width="100%"
@@ -85,6 +91,8 @@ const getTeckStack = (stack:any)=>{
                     onChange={value => setValue(value)}
                   
                 />
+                <Console />
+
             </div>
         </div>
     );

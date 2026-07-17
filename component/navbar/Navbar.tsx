@@ -151,11 +151,11 @@ export default function Header() {
                     </SignInButton>
 
 
-                    {/* Run Code CTA */}
+                    {/* Run Code CTA
                     <button className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 px-4 py-1.5 text-xs font-semibold text-white shadow-md shadow-indigo-500/20 hover:from-indigo-600 hover:to-purple-700 hover:shadow-indigo-500/30 active:scale-[0.98] transition-all cursor-pointer">
                         <Play className="h-3.5 w-3.5 fill-current" />
                         <span>Run Code</span>
-                    </button>
+                    </button> */}
                 </div>
 
                 {/* Mobile Menu Toggler */}

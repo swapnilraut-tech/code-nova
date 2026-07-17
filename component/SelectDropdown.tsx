@@ -28,7 +28,7 @@ export function SelectDemo({ value, setLang }:any) {
                 <SelectGroup>
                     <SelectLabel>lang</SelectLabel>
                     {items.map((item) => (
-                        <SelectItem key={item.label} value={item.label}>
+                        <SelectItem className={`${item.label === value ? "text-black bg-gray-100" :""}`} key={item.label} value={item.label}>
                             {item.label} - {item.value}
                         </SelectItem>
                     ))}

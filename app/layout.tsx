@@ -45,7 +45,6 @@ export default function RootLayout({
 
             <Header />
             {children}
-              <Console />
             </ReduxProvider>
           </ThemeProvider>
         </body>

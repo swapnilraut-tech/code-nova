@@ -43,7 +43,7 @@ const getTeckStack = (stack:any)=>{
             
             {/* Editor Action Header */}
             <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950/60 px-4 py-3 rounded-t-xl transition-all duration-300">
-                <div className="flex items-center gap-2">
+                <div className="flex  min-w-[250px]   items-center gap-2">
                     <FileCode className="h-4 w-4 text-yellow-500 dark:text-yellow-400" />
                     <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">index.js</span>
                     <span className="h-2 w-2 rounded-full bg-zinc-300 dark:bg-zinc-600"></span>
@@ -51,7 +51,7 @@ const getTeckStack = (stack:any)=>{
                 </div>
 
                 {/* Run Code CTA */}
-                <button className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 px-4 py-1.5 text-xs font-semibold text-white shadow-md shadow-indigo-500/20 hover:from-indigo-600 hover:to-purple-700 hover:shadow-indigo-500/30 active:scale-[0.98] transition-all cursor-pointer">
+                <button className="flex mr-10 items-center gap-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 px-4 py-1.5 text-xs font-semibold text-white shadow-md shadow-indigo-500/20 hover:from-indigo-600 hover:to-purple-700 hover:shadow-indigo-500/30 active:scale-[0.98] transition-all cursor-pointer">
                     <Play className="h-3.5 w-3.5 fill-current" />
                     <span>Run Code</span>
                 </button>

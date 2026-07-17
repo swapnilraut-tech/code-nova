@@ -193,7 +193,7 @@ export default function Header() {
                             <Share2 className="h-4 w-4" />
                             <span>Share Workspace</span>
                         </button>
-                        <button  className="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 py-2 text-sm font-semibold text-white">
+                        <button  className="flex  w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 py-2 text-sm font-semibold text-white">
                             <Play className="h-4 w-4 fill-current" />
                             <span>Run Code</span>
                         </button>

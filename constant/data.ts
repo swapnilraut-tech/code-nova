@@ -6,12 +6,12 @@ export const items: {
   csharp: string;
   php: string;
 } = {
-  javascript: "ES2023",
-  typescript: "5.8.3",
-  python: "3.13.5",
-  java: "24",
-  csharp: "13.0",
-  php: "8.4.10",
+  "javascript": "18.15.0",
+  "typescript": "7.0.2",
+  "python": "3.15.0",
+  "java": "15.0.2",
+  "csharp": "14.0",
+  "php": "8.5.0",
 };
 
 

@@ -8,6 +8,7 @@ import { CODE_SNIPPETS } from '@/constant/data';
 import Console from './Console';
 import { useDispatch } from 'react-redux';
 import { setLang } from '@/redux/features/editorSlice';
+import { executeCode } from '@/services';
 
 
 function CodeEditor() {
@@ -41,6 +42,16 @@ function CodeEditor() {
         setValue(CODE_SNIPPETS[stack])
         dispatch(setLang(stack ?? ""))
     }
+
+    const runCode = async()=>{
+        const sourceCode = editorRef.current.getValue()
+        if(!sourceCode) return
+        try {
+            const data = await executeCode(language, value)
+        } catch (error) {
+            
+        }
+    }
     return (
         <div className="flex flex-col flex-1 p-4 md:p-6 bg-white dark:bg-zinc-900/30 rounded-2xl border border-zinc-200 dark:border-zinc-800/80 shadow-2xl backdrop-blur-sm mt-6 mb-8 mx-4 sm:mx-6 lg:mx-8 transition-all duration-300">
 
@@ -54,7 +65,7 @@ function CodeEditor() {
                 </div>
 
                 {/* Run Code CTA */}
-                <button className="flex mr-10 items-center gap-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 px-4 py-1.5 text-xs font-semibold text-white shadow-md shadow-indigo-500/20 hover:from-indigo-600 hover:to-purple-700 hover:shadow-indigo-500/30 active:scale-[0.98] transition-all cursor-pointer">
+                <button onClick={runCode} className="flex mr-10 items-center gap-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 px-4 py-1.5 text-xs font-semibold text-white shadow-md shadow-indigo-500/20 hover:from-indigo-600 hover:to-purple-700 hover:shadow-indigo-500/30 active:scale-[0.98] transition-all cursor-pointer">
                     <Play className="h-3.5 w-3.5 fill-current" />
                     <span>Run Code</span>
                 </button>

@@ -13,6 +13,8 @@ export default function Console({ language, editorRef }: { language: string, edi
         (state: RootState) => state.editor.error
     );
 
+
+    
     return (
 
         <div className="mt-5 rounded-xl border border-zinc-800 bg-zinc-950">

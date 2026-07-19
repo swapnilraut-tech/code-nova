@@ -8,9 +8,8 @@ import { CODE_SNIPPETS } from '@/constant/data';
 import Console from './Console';
 import { useDispatch } from 'react-redux';
 import { setLang } from '@/redux/features/editorSlice';
-import { executeCode } from '@/services';
 
-
+ 
 function CodeEditor() {
     const editorRef = useRef<any>(null);
     const { resolvedTheme } = useTheme();
@@ -47,7 +46,6 @@ function CodeEditor() {
         const sourceCode = editorRef.current.getValue()
         if(!sourceCode) return
         try {
-            const data = await executeCode(language, value)
         } catch (error) {
             
         }
@@ -65,7 +63,7 @@ function CodeEditor() {
                 </div>
 
                 {/* Run Code CTA */}
-                <button onClick={runCode} className="flex mr-10 items-center gap-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 px-4 py-1.5 text-xs font-semibold text-white shadow-md shadow-indigo-500/20 hover:from-indigo-600 hover:to-purple-700 hover:shadow-indigo-500/30 active:scale-[0.98] transition-all cursor-pointer">
+                <button  className="flex mr-10 items-center gap-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 px-4 py-1.5 text-xs font-semibold text-white shadow-md shadow-indigo-500/20 hover:from-indigo-600 hover:to-purple-700 hover:shadow-indigo-500/30 active:scale-[0.98] transition-all cursor-pointer">
                     <Play className="h-3.5 w-3.5 fill-current" />
                     <span>Run Code</span>
                 </button>

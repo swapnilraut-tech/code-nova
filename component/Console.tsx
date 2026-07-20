@@ -31,9 +31,7 @@ export default function Console({ data, ispending, language, editorRef }: { lang
     const error = useSelector(
         (state: RootState) => state.editor.error
     );
-
-    console.log(data?.data, '=====================data')
-
+    
     return (
 
         <div className="mt-5 rounded-xl border border-zinc-800 bg-zinc-950">
@@ -57,7 +55,7 @@ export default function Console({ data, ispending, language, editorRef }: { lang
                 ) : (
 
                         <pre className={`${data?.data.stderr ? "text-red-400" :"text-green-400"} whitespace-pre-wrap`}>
-                            {data?.data.stderr ? data?.data.stderr : data ? data.data.stdout : ispending ? "wait..." : "no output"}
+                            {data?.data.stderr ? data?.data.stderr : data ? data.data.stdout : ispending ? "Running..." : "no output"}
                     </pre>
 
                 )}

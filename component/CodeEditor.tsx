@@ -80,7 +80,7 @@ function CodeEditor() {
                 {/* Run Code CTA */}
                 <button onClick={runCode} className="flex mr-10 items-center gap-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 px-4 py-1.5 text-xs font-semibold text-white shadow-md shadow-indigo-500/20 hover:from-indigo-600 hover:to-purple-700 hover:shadow-indigo-500/30 active:scale-[0.98] transition-all cursor-pointer">
                     {!isPending ? <Play className="h-3.5 w-3.5 fill-current" /> : <Loader2 className="h-3.5 w-3.5  animate-spin" />
-}                    <span>{isPending ? "runing..." : "Run Code"}</span>
+}                    <span>{isPending ? "Running..." : "Run Code"}</span>
                 </button>
                 <div className="flex items-center gap-2">
                     <button

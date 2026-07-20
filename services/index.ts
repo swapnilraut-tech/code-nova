@@ -18,9 +18,9 @@ const apiClient = axios.create({
 //   ],
 // })
 // }
-interface SourceCode {
+export interface SourceCode {
 lang:string
-ver:string
+ver:number
 }
 interface ConsoleResponse {
   id: number;
@@ -28,7 +28,7 @@ interface ConsoleResponse {
 }
 export const createConsole = async(data:SourceCode):Promise<any>=>{
   try {
-    const res = await apiClient.post("/submissions", JSON.stringify(data));
+    const res = await apiClient.post("/api/console", JSON.stringify(data));
     return res
   } catch (error) {
     if (axios.isAxiosError(error)) {

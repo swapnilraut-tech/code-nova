@@ -4,9 +4,10 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { sourceCode, language } = body;
+    const sourceCode = body.sourceCode || body.source_code;
+    const language = body.language || body.language_id;
     const res = await axios.post(
-      "http://localhost:3000/submissions",
+      "http://localhost:3000/submissions?wait=true",
       {
         source_code: sourceCode,
         language_id: language,

@@ -3,8 +3,27 @@
 
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-
-export default function Console({ language, editorRef }: { language: string, editorRef: React.RefObject<any> }) {
+export interface ConsoleResponse {
+    data: {
+        token: string;
+        source_code: string;
+        language_id: number;
+        stdin: string;
+        expected_output: string | null;
+        stdout: string | null;
+        stderr: string | null;
+        compile_output: string | null;
+        message: string | null;
+        created_at: string;
+        finished_at: string;
+        time: string;
+        wall_time: string;
+        memory: number | null;
+        exit_code: number;
+        exit_signal: string | null;
+    }
+}
+export default function Console({ data, ispending, language, editorRef }: { language: string, ispending: boolean, editorRef: React.RefObject<any>, data: ConsoleResponse }) {
     const output = useSelector(
         (state: RootState) => state.editor.output
     );
@@ -13,8 +32,8 @@ export default function Console({ language, editorRef }: { language: string, edi
         (state: RootState) => state.editor.error
     );
 
+    console.log(data?.data, '=====================data')
 
-    
     return (
 
         <div className="mt-5 rounded-xl border border-zinc-800 bg-zinc-950">
@@ -37,14 +56,13 @@ export default function Console({ language, editorRef }: { language: string, edi
 
                 ) : (
 
-                    <pre className="text-green-400 whitespace-pre-wrap">
-                        {output || "No Output"}
+                        <pre className={`${data?.data.stderr ? "text-red-400" :"text-green-400"} whitespace-pre-wrap`}>
+                            {data?.data.stderr ? data?.data.stderr : data ? data.data.stdout : ispending ? "wait..." : "no output"}
                     </pre>
 
                 )}
 
             </div>
-
         </div>
 
     )

@@ -10,12 +10,12 @@ import {
 } from "@/components/ui/select"
 
 const items = [
-    { label: "javascript", value: "ES2023" },
-    { label: "typescript", value: "5.8.3" },
-    { label: "python", value: "3.13.5" },
-    { label: "java", value: "24" },
-    { label: "csharp", value: "13.0" },
-    { label: "php", value: "8.4.10" },
+    { label: "javascript", value: 63 },
+    { label: "typescript", value: 74 },
+    { label: "python", value: 71 },
+    { label: "java", value: 62 },
+    { label: "csharp", value: 51 },
+    { label: "php", value: 68 },
 ]
 
 export function SelectDemo({ value, setLang }:any) {

@@ -3,7 +3,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: "https://emkc.org/api/v2/piston",
+  baseURL: "http://localhost:3001",
 });
 
 // export const executeCode = async(language:string  , sourceCode:any) => {
@@ -19,8 +19,8 @@ const apiClient = axios.create({
 // })
 // }
 export interface SourceCode {
-lang:string
-ver:number
+  sourceCode: string;
+  language: number;
 }
 interface ConsoleResponse {
   id: number;
@@ -28,7 +28,10 @@ interface ConsoleResponse {
 }
 export const createConsole = async(data:SourceCode):Promise<any>=>{
   try {
-    const res = await apiClient.post("/api/console", JSON.stringify(data));
+    const res = await apiClient.post(
+      "/api/console",
+      JSON.stringify(data),
+    );
     return res
   } catch (error) {
     if (axios.isAxiosError(error)) {

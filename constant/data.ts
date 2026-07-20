@@ -8,14 +8,14 @@ export const items: {
   c: number;
   cpp: number;
 } = {
-  javascript: 63,
-  typescript: 74,
-  python: 71,
-  java: 62,
-  csharp: 51,
-  php: 68,
-  c: 50,
-  cpp: 54,
+  "javascript": 63,
+  "typescript": 74,
+  "python": 71,
+  "java": 62,
+  "csharp": 51,
+  "php": 68,
+  "c": 50,
+  "cpp": 54,
 };
 
 export const CODE_SNIPPETS: Record<string, string> = {

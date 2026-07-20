@@ -10,7 +10,17 @@ import { useDispatch } from 'react-redux';
 import { setLang } from '@/redux/features/editorSlice';
 import { useCreateConsole } from '@/hooks/useCreateConsole';
 
- 
+const fileNames: Record<keyof typeof items, string> = {
+    javascript: "index.js",
+    typescript: "index.ts",
+    python: "main.py",
+    java: "Main.java",
+    csharp: "Program.cs",
+    php: "index.php",
+    c: "main.c",
+    cpp: "main.cpp"
+};
+
 function CodeEditor() {
     const editorRef = useRef<any>(null);
     const { resolvedTheme } = useTheme();
@@ -51,7 +61,7 @@ function CodeEditor() {
         if(!sourceCode) return
         try {
             createConsole({
-                sourceCode: value ,
+                sourceCode,
                 language: items[language]
             },
         {
@@ -72,7 +82,7 @@ function CodeEditor() {
             <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950/60 px-4 py-3 rounded-t-xl transition-all duration-300">
                 <div className="flex  min-w-[250px]   items-center gap-2">
                     <FileCode className="h-4 w-4 text-yellow-500 dark:text-yellow-400" />
-                    <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">index.js</span>
+                    <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">{fileNames[language]}</span>
                     <span className="h-2 w-2 rounded-full bg-zinc-300 dark:bg-zinc-600"></span>
                     <SelectDemo value={language} setLang={getTeckStack} />
                 </div>
@@ -99,8 +109,8 @@ function CodeEditor() {
                     height="55vh"
                     width="100%"
                     theme={currentTheme}
-                    defaultLanguage="javascript"
-                    defaultValue="// Type your JavaScript code here&#10;console.log('Hello CodeNova!');&#10;&#10;const numbers = [1, 2, 3, 4, 5];&#10;const doubled = numbers.map(n => n * 2);&#10;console.log(doubled);"
+                    path={`file:///${fileNames[language]}`}
+                    language={language}
                     onMount={handleEditorDidMount}
                     options={{
                         fontSize: 14,
@@ -112,11 +122,9 @@ function CodeEditor() {
                         },
                         fontFamily: 'var(--font-geist-mono), monospace',
                         lineHeight: 22,
-
                     }}
                     value={value}
                     onChange={value => setValue(value ?? "")}
-
                 />
                 <Console ispending={isPending} data={data} language={language} editorRef={editorRef}/>
 
